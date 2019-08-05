@@ -4,14 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             Height="406" Width="575">
-  <Canvas>
-    <Border Margin="40" BorderThickness="1" BorderBrush="Black">
-      <Canvas x:Uid="MainCanvas" x:Name="MainCanvas" Width="500" Height="330">
-      </Canvas>
-    </Border>
-    <Label Canvas.Left="181" Canvas.Top="12" Content="Cumulative Dose Volume Histogram" FontWeight="Bold" />
-    <Label Canvas.Left="0" Canvas.Top="28" Content="100%" Height="28" />
-    <Label Canvas.Left="526" Canvas.Top="370" Content="100%" Height="28" Name="DoseMaxLabel" />
-  </Canvas>
+             d:DesignHeight="500" d:DesignWidth="700">
+    <Canvas>
+        <Border Margin="40" BorderThickness="1" BorderBrush="Black">
+            <Canvas x:Uid="MainCanvas" x:Name="MainCanvas" Width="500" Height="330">
+            </Canvas>
+        </Border>
+        <Label Canvas.Left="181" Canvas.Top="12" Content="Cumulative Dose Volume Histogram" FontWeight="Bold" />
+        <Label Canvas.Left="0" Canvas.Top="28" Content="100%" Height="28" />
+        <Label Canvas.Left="526" Canvas.Top="370" Content="100%" Height="28" Name="DoseMaxLabel" />
+        <ComboBox Canvas.Left="570" Canvas.Top="76" Width="120" x:Name="organListComboBox"/>
+        <Button Content="Calculate DVH" Canvas.Left="570" Canvas.Top="146" Width="120" Click="calDvhClick"/>
+        <Button Content="Print" Canvas.Left="570" Canvas.Top="214" Width="120"/>
+        <Grid Height="70" Canvas.Left="40" Canvas.Top="403" Width="502" x:Name="infoStack">
+            <TextBox TextWrapping="Wrap" x:Name="infoText"></TextBox>
+        </Grid>
+    </Canvas>
 </UserControl>
