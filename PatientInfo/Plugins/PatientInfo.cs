@@ -23,9 +23,18 @@ namespace VMS.TPS
         {
             // TODO : Add here the code that is called when the script is launched from Eclipse.
             string patientName = context.Patient.Name;
+            var birthDate = string.IsNullOrEmpty(context.Patient.DateOfBirth.ToString()) ? "No Dob" : context.Patient.DateOfBirth.ToString();
 
+            string planId = context.ExternalPlanSetup.Id;
+            string maxDose = context.ExternalPlanSetup.Dose.DoseMax3D.Dose.ToString();
+            string doseUnit = context.ExternalPlanSetup.Dose.DoseMax3D.UnitAsString;
 
-            MessageBox.Show(patientName);
+            string locationV = context.ExternalPlanSetup.Dose.DoseMax3DLocation.x.ToString() + ", " +
+                context.ExternalPlanSetup.Dose.DoseMax3DLocation.y + ", " +
+                context.ExternalPlanSetup.Dose.DoseMax3DLocation.z;
+
+            MessageBox.Show(string.Format("patient name = {0}, birthdate = {1}", patientName, birthDate));
+            MessageBox.Show(string.Format("planID = {0}, max dose = {1} {2} at {3}", planId, maxDose, doseUnit, locationV));
         }
     }
 }
