@@ -1,0 +1,6 @@
+C:\Users\cwalker\Documents\MyExercises\PatientInfo\Projects\PatientInfo\bin\debug\PatientInfo.dll
+C:\Users\cwalker\Documents\MyExercises\PatientInfo\Projects\PatientInfo\bin\debug\PatientInfo.pdb
+C:\Users\cwalker\Documents\MyExercises\PatientInfo\Projects\PatientInfo\obj\x64\Debug\PatientInfo.csprojAssemblyReference.cache
+C:\Users\cwalker\Documents\MyExercises\PatientInfo\Projects\PatientInfo\obj\x64\Debug\PatientInfo.csproj.CoreCompileInputs.cache
+C:\Users\cwalker\Documents\MyExercises\PatientInfo\Projects\PatientInfo\obj\x64\Debug\PatientInfo.dll
+C:\Users\cwalker\Documents\MyExercises\PatientInfo\Projects\PatientInfo\obj\x64\Debug\PatientInfo.pdb

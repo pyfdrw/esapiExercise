@@ -12,16 +12,20 @@ using VMS.TPS.Common.Model.Types;
 
 namespace VMS.TPS
 {
-  public class Script
-  {
-    public Script()
+    public class Script
     {
-    }
+        public Script()
+        {
+        }
 
-    [MethodImpl(MethodImplOptions.NoInlining)]
-    public void Execute(ScriptContext context /*, System.Windows.Window window, ScriptEnvironment environment*/)
-    {
-      // TODO : Add here the code that is called when the script is launched from Eclipse.
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public void Execute(ScriptContext context /*, System.Windows.Window window, ScriptEnvironment environment*/)
+        {
+            // TODO : Add here the code that is called when the script is launched from Eclipse.
+            string patientName = context.Patient.Name;
+
+
+            MessageBox.Show(patientName);
+        }
     }
-  }
 }
