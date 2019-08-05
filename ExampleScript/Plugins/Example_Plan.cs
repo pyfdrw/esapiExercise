@@ -19,7 +19,7 @@ namespace VMS.TPS
 
         // Parameters are commented out because we neither need a window for this script nor access to ScriptEnvironment.
         [MethodImpl(MethodImplOptions.NoInlining)]
-        public void Execute(ScriptContext context /*, System.Windows.Window window, ScriptEnvironment environment */)
+        public void Execute(ScriptContext context , System.Windows.Window window, ScriptEnvironment environment)
         {
             // Retrieve the count of plans displayed in Scope Window
             int scopePlanCount = context.PlansInScope.Count();
@@ -108,10 +108,10 @@ namespace VMS.TPS
                 message += string.Format("\n* Number of Beams: {0}." + Environment.NewLine, beams.Count());
 
                 // TODO show info of beams
-                foreach (Beam beamSingle in plan.Beams)
+                foreach (Beam beamSingle in plan.Beams.OrderBy(x => x.BeamNumber))
                 {
                     message += string.Format("Beam name equal to {0} , ", beamSingle.Id);
-                    message += string.Format("and MU = {0}" + Environment.NewLine, beamSingle.Meterset.Value.ToString() + beamSingle.Meterset.Unit.ToString());
+                    message += string.Format("and MeterSet = {0}" + Environment.NewLine, beamSingle.Meterset.Value.ToString() + " " + beamSingle.Meterset.Unit.ToString());
                 }
             }
             if (plan is IonPlanSetup)
@@ -126,7 +126,8 @@ namespace VMS.TPS
                 }
             }
 
-            MessageBox.Show(message);
+            // MessageBox.Show(message);
+            window.Content = message;
         }
     }
 }
