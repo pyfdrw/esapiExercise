@@ -132,11 +132,13 @@ namespace Example_DVH
 
             printButton.Visibility = Visibility.Hidden;
             organListComboBox.Visibility = Visibility.Hidden;
+            calButton.Visibility = Visibility.Hidden;
 
             dlg.PrintVisual(this,  "testPrint");
 
             printButton.Visibility = Visibility.Visible;
             organListComboBox.Visibility = Visibility.Visible;
+            calButton.Visibility = Visibility.Visible;
         }
     }
 }
