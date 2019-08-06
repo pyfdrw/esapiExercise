@@ -60,7 +60,7 @@ namespace Example_DVH
                                           VolumePresentation.Relative, 1);
 
             // clear 
-            MainCanvas.Children.Clear();
+            // MainCanvas.Children.Clear();
 
             // Calculate multipliers for scaling DVH to canvas.
             double xCoeff = MainCanvas.Width / dvhData.MaxDose.Dose;
@@ -117,6 +117,12 @@ namespace Example_DVH
         {
             calculateDvhFromOrganId();
             DrawDVH();
+        }
+
+        // Print reports click
+        private void printReport_ButtonClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
