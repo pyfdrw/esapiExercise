@@ -28,6 +28,8 @@ namespace Example_DVH
 
         Structure stuSelected = null;
 
+        DoseValue maxDose;
+
         public bool IsInitializationFinished = false;
 
         public MainControl(ObservableCollection<string> organList, PlanSetup planIn)
@@ -41,6 +43,8 @@ namespace Example_DVH
             {
                 organNames = organList;
                 planSetupInUse = planIn;
+
+                maxDose = planIn.Dose.DoseMax3D;
 
                 IsInitializationFinished = true;
             }
@@ -62,12 +66,14 @@ namespace Example_DVH
             // clear 
             // MainCanvas.Children.Clear();
 
+            // change dose from percent to absolute
+
             // Calculate multipliers for scaling DVH to canvas.
-            double xCoeff = MainCanvas.Width / dvhData.MaxDose.Dose;
+            double xCoeff = MainCanvas.Width / maxDose.Dose;
             double yCoeff = MainCanvas.Height / 100;
 
             // Set Y axis label
-            DoseMaxLabel.Content = string.Format("{0:F0} {1}", dvhData.MaxDose.Dose, dvhData.MaxDose.UnitAsString);
+            DoseMaxLabel.Content = string.Format("{0:F0} {1}", maxDose.Dose, maxDose.UnitAsString);
 
             // Draw histogram 
             for (int i = 0; i < dvhData.CurveData.Length - 1; i++)
@@ -122,7 +128,15 @@ namespace Example_DVH
         // Print reports click
         private void printReport_ButtonClick(object sender, RoutedEventArgs e)
         {
+            PrintDialog dlg = new PrintDialog();
 
+            printButton.Visibility = Visibility.Hidden;
+            organListComboBox.Visibility = Visibility.Hidden;
+
+            dlg.PrintVisual(this,  "testPrint");
+
+            printButton.Visibility = Visibility.Visible;
+            organListComboBox.Visibility = Visibility.Visible;
         }
     }
 }

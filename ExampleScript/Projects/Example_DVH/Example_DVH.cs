@@ -24,6 +24,7 @@ namespace VMS.TPS
         public void Execute(ScriptContext context, Window window)
         {
             PlanSetup planSetup = context.PlanSetup;
+            planSetup.DoseValuePresentation = DoseValuePresentation.Absolute;
 
             // If there's no selected plan with calculated dose throw an exception
             if (planSetup == null || planSetup.Dose == null)
