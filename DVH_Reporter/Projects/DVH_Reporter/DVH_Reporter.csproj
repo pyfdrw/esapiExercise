@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DVH_Reporter.cs" />
+    <Compile Include="ViewModels\DVHViewModel.cs" />
     <Compile Include="Views\DVHView.xaml.cs">
       <DependentUpon>DVHView.xaml</DependentUpon>
     </Compile>
@@ -75,8 +76,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
