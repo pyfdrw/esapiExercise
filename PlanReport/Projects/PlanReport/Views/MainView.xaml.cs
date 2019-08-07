@@ -1,5 +1,4 @@
-﻿using Dose_Metrics.ESAPIServices;
-using Dose_Metrics.ViewModels;
+﻿using PlanReport.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,20 +13,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using VMS.TPS.Common.Model.API;
 
-namespace Dose_Metrics.Views
+namespace PlanReport.Views
 {
     /// <summary>
-    /// Interaction logic for DoseMetricView.xaml
+    /// Interaction logic for MainView.xaml
     /// </summary>
-    public partial class DoseMetricView : UserControl
+    public partial class MainView : UserControl
     {
-        public DoseMetricView(PlanSetup planSetup, ESAPI_Methods eSAPI_Methods)
+        public MainView(MainViewModel mainViewModel)
         {
-            DoseMetricViewModel doseMetricViewModel = new DoseMetricViewModel(planSetup, eSAPI_Methods);
+            this.DataContext = mainViewModel;
 
-            this.DataContext = doseMetricViewModel;
             InitializeComponent();
         }
     }

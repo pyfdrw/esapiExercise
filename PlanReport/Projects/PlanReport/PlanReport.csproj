@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
-    <ProjectGuid>{01FA5853-4C21-43E1-91DE-17D50CBE451D}</ProjectGuid>
+    <ProjectGuid>{0E4E0CEE-504F-42AB-9377-392AC66D798A}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dose_Metrics</RootNamespace>
-    <AssemblyName>Dose_Metrics7.esapi</AssemblyName>
+    <RootNamespace>PlanReport</RootNamespace>
+    <AssemblyName>PlanReport9.esapi</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -32,6 +32,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.9.3.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>packages\Autofac.4.9.3\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot, Version=1.0.0.0, Culture=neutral, PublicKeyToken=638079a8f0bd61e9, processorArchitecture=MSIL">
+      <HintPath>packages\OxyPlot.Core.1.0.0\lib\net45\OxyPlot.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.Wpf, Version=1.0.0.0, Culture=neutral, PublicKeyToken=75e952ba404cdbb0, processorArchitecture=MSIL">
+      <HintPath>packages\OxyPlot.Wpf.1.0.0\lib\net45\OxyPlot.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="Prism, Version=7.2.0.1367, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>packages\Prism.Core.7.2.0.1367\lib\net45\Prism.dll</HintPath>
     </Reference>
@@ -61,13 +70,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dose_Metrics.cs" />
     <Compile Include="ESAPIServices\ESAPI_Methods.cs" />
     <Compile Include="Models\DVHMetric.cs" />
     <Compile Include="Models\MetricType.cs" />
+    <Compile Include="PlanReport.cs" />
+    <Compile Include="StartUp\Bootstrapper.cs" />
     <Compile Include="ViewModels\DoseMetricViewModel.cs" />
+    <Compile Include="ViewModels\DVHViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\PlanViewModel.cs" />
     <Compile Include="Views\DoseMetricView.xaml.cs">
       <DependentUpon>DoseMetricView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DVHView.xaml.cs">
+      <DependentUpon>DVHView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanDetailView.xaml.cs">
+      <DependentUpon>PlanDetailView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -76,8 +98,20 @@
   <ItemGroup />
   <ItemGroup>
     <Page Include="Views\DoseMetricView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DVHView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PlanDetailView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

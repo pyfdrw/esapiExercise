@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanReport", "PlanReport.csproj", "{0E4E0CEE-504F-42AB-9377-392AC66D798A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E4E0CEE-504F-42AB-9377-392AC66D798A}.Debug|x64.ActiveCfg = Debug|x64
+		{0E4E0CEE-504F-42AB-9377-392AC66D798A}.Debug|x64.Build.0 = Debug|x64
+		{0E4E0CEE-504F-42AB-9377-392AC66D798A}.Release|x64.ActiveCfg = Release|x64
+		{0E4E0CEE-504F-42AB-9377-392AC66D798A}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5BC38C4D-44B9-4C24-9358-76C584D3D849}
+	EndGlobalSection
+EndGlobal

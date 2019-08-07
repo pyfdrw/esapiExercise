@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
-    <ProjectGuid>{01FA5853-4C21-43E1-91DE-17D50CBE451D}</ProjectGuid>
+    <ProjectGuid>{E20B192C-8DCB-4E7B-A3E3-A1376013260D}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dose_Metrics</RootNamespace>
-    <AssemblyName>Dose_Metrics7.esapi</AssemblyName>
+    <RootNamespace>ExamplePlan</RootNamespace>
+    <AssemblyName>ExamplePlan.esapi</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -32,14 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Prism, Version=7.2.0.1367, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>packages\Prism.Core.7.2.0.1367\lib\net45\Prism.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -61,21 +55,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dose_Metrics.cs" />
-    <Compile Include="ESAPIServices\ESAPI_Methods.cs" />
-    <Compile Include="Models\DVHMetric.cs" />
-    <Compile Include="Models\MetricType.cs" />
-    <Compile Include="ViewModels\DoseMetricViewModel.cs" />
-    <Compile Include="Views\DoseMetricView.xaml.cs">
-      <DependentUpon>DoseMetricView.xaml</DependentUpon>
+    <Compile Include="ExamplePlan.cs" />
+    <Compile Include="ViewModel\PlanViewModel.cs" />
+    <Compile Include="View\PlanDetailView.xaml.cs">
+      <DependentUpon>PlanDetailView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Page Include="Views\DoseMetricView.xaml">
+    <Page Include="View\PlanDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

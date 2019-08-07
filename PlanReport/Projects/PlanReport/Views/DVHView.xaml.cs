@@ -1,5 +1,4 @@
-﻿using Dose_Metrics.ESAPIServices;
-using Dose_Metrics.ViewModels;
+﻿using DVH_Reporter.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,18 +15,24 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VMS.TPS.Common.Model.API;
 
-namespace Dose_Metrics.Views
+namespace DVH_Reporter.Views
 {
     /// <summary>
-    /// Interaction logic for DoseMetricView.xaml
+    /// Interaction logic for DVHView.xaml
     /// </summary>
-    public partial class DoseMetricView : UserControl
+    public partial class DVHView : UserControl
     {
-        public DoseMetricView(PlanSetup planSetup, ESAPI_Methods eSAPI_Methods)
+        public DVHView(PlanSetup planSetup)
         {
-            DoseMetricViewModel doseMetricViewModel = new DoseMetricViewModel(planSetup, eSAPI_Methods);
+            DVHViewModel dvhViewModel = new DVHViewModel(planSetup);
 
-            this.DataContext = doseMetricViewModel;
+            this.DataContext = dvhViewModel;
+
+            InitializeComponent();
+        }
+
+        public DVHView()
+        {
             InitializeComponent();
         }
     }

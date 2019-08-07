@@ -30,5 +30,10 @@ namespace Dose_Metrics.Views
             this.DataContext = doseMetricViewModel;
             InitializeComponent();
         }
+
+        public DoseMetricView()
+        {
+            InitializeComponent();
+        }
     }
 }
