@@ -26,7 +26,7 @@ namespace VMS.TPS
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
-        public void Execute(ScriptContext context , System.Windows.Window window, ScriptEnvironment environment)
+        public void Execute(ScriptContext context , System.Windows.Window window/*, ScriptEnvironment environment*/)
         {
             // TODO : Add here the code that is called when the script is launched from Eclipse.
             if(context?.PlanSetup?.Dose == null)

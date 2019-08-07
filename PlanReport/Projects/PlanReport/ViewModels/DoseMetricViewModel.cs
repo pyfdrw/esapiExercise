@@ -127,8 +127,7 @@ namespace Dose_Metrics.ViewModels
         {
 
             if (null == _planSetup 
-                || string.IsNullOrEmpty(SelectedMetric) || string.IsNullOrEmpty(selectedStructure)
-                || string.IsNullOrEmpty(CustomMetric))
+                || string.IsNullOrEmpty(SelectedMetric) || string.IsNullOrEmpty(selectedStructure))
             {
                 return false;
             }

@@ -11,6 +11,7 @@ using PlanReport.StartUp;
 using Autofac;
 using PlanReport.Views;
 using Dose_Metrics.ESAPIServices;
+using System.Windows.Controls;
 
 // TODO: Replace the following version attributes by creating AssemblyInfo.cs. You can do this in the properties of the Visual Studio project.
 [assembly: AssemblyVersion("1.0.0.1")]
@@ -41,6 +42,8 @@ namespace VMS.TPS
 
             window.Height = 1100;
             window.Width = 810;
+
+            
         }
     }
 }

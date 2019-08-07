@@ -23,6 +23,7 @@ namespace VMS.TPS
         [MethodImpl(MethodImplOptions.NoInlining)]
         public void Execute(ScriptContext context, Window window)
         {
+
             PlanSetup planSetup = context.PlanSetup;
             planSetup.DoseValuePresentation = DoseValuePresentation.Absolute;
 
