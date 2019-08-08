@@ -18,6 +18,7 @@
             <RowDefinition Height="1.5*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="15*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
@@ -43,7 +44,12 @@
                   ItemsSource="{Binding PlanSetups}" 
                   SelectedItem="{Binding SelectedPlan, Mode=TwoWay}"  Margin="5"/>
 
-        <ListBox Grid.Row="3" ItemsSource="{Binding ScanDataCollection}" Grid.ColumnSpan="3" x:Name="myListBox">
+        <!--Writable Scripting only-->
+        <TextBlock Grid.Row="3" Text="Field Sized:"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding FileSizes}"></TextBlock>
+        <Button Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Command="{Binding CalculateBeamCommand}">Calculate Beams</Button>
+
+            <ListBox Grid.Row="4" ItemsSource="{Binding ScanDataCollection}" Grid.ColumnSpan="3" x:Name="myListBox">
             <iz:Interaction.Triggers>
                 <iz:EventTrigger EventName="SelectionChanged">
                     <iz:InvokeCommandAction Command="{Binding SelectedItemChangedCommand}"  CommandParameter="{Binding ElementName=myListBox, Path=SelectedItem}"/>
@@ -63,9 +69,9 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <oxy:PlotView Model="{Binding ProfilePlotModel}" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Visibility="{Binding ProfileVisibility}"></oxy:PlotView>
-        <oxy:PlotView Model="{Binding PDDPlotModel}"  Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Visibility="{Binding PDDVisibility}"></oxy:PlotView>
+        <oxy:PlotView Model="{Binding ProfilePlotModel}" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" Visibility="{Binding ProfileVisibility}"></oxy:PlotView>
+        <oxy:PlotView Model="{Binding PDDPlotModel}"  Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" Visibility="{Binding PDDVisibility}"></oxy:PlotView>
 
-        <Button Grid.Row="4" Grid.ColumnSpan="4" Command="{Binding ExportDataCommand}">Export to .csv</Button>
+        <Button Grid.Row="5" Grid.ColumnSpan="5" Command="{Binding ExportDataCommand}">Export to .csv</Button>
     </Grid>
 </Window>

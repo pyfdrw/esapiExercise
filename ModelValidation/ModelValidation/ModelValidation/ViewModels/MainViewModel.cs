@@ -49,6 +49,16 @@ namespace ModelValidation.ViewModels
         public ObservableCollection<ScanData> ScanDataCollection { get; private set; }
         public DelegateCommand ExportDataCommand { get; private set; }
 
+        private string fileSizes = "3;7;17";
+
+        public string FileSizes
+        {
+            get { return fileSizes; }
+            set { SetProperty(ref fileSizes, value); }
+        }
+
+        public DelegateCommand CalculateBeamCommand { get; private set; }
+
         // ?
         private ICommand closedWindowCommand;
 
@@ -127,9 +137,55 @@ namespace ModelValidation.ViewModels
             SelectedItemChangedCommand = new DelegateCommand<object>(executeMethod: PlotFunction);
 
             ExportDataCommand = new DelegateCommand(OnExportData, CanExportData);
+
+            CalculateBeamCommand = new DelegateCommand(OnCalcuateBeams);
         }
 
-        
+        // Calculate beams
+        private void OnCalcuateBeams()
+        {
+            if(_patient != null)
+            {
+                _patient.BeginModifications();
+                Course course_temp = _patient.AddCourse();
+                ExternalPlanSetup plan_temp = course_temp.
+                    AddExternalPlanSetup(_patient.StructureSets.FirstOrDefault());
+                ExternalBeamMachineParameters exBeamParams = new ExternalBeamMachineParameters(
+                    "HESN10",
+                    "6X",
+                    600,
+                    "STATIC",
+                    "FFF");
+                foreach (string fs in FileSizes.Split(';'))
+                {
+                    double fsd = Convert.ToDouble(fs);
+                    plan_temp.AddStaticBeam(exBeamParams,
+                        new VRect<double>(-fsd / 2 * 10, -fsd / 2 * 10, fsd / 2 * 10, fsd / 2 * 10),
+                        0,
+                        0,
+                        0,
+                        new VVector(0, -200, 0));
+                }
+                plan_temp.SetPrescription(1, new DoseValue(100, DoseValue.DoseUnit.cGy), 1);
+                plan_temp.CalculateDose();
+
+                app.SaveModifications();
+                AddCourses(_patient);
+                SelectedCourse = course_temp.Id;
+                SelectedPlan = plan_temp.Id;
+            }
+        }
+
+        private void AddCourses(Patient patient)
+        {
+            Courses.Clear();
+            // throw new NotImplementedException();
+            foreach (var item in patient.Courses)
+            {
+                Courses.Add(item.Id);
+            }
+        }
+
         private bool CanExportData()
         {
             return !string.IsNullOrEmpty(SelectedPlan) && ScanDataCollection.Count != 0;

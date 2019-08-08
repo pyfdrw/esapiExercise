@@ -14,7 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VMS.TPS.Common.Model.API;
 
+[assembly : ESAPIScript(IsWriteable = true)]
 namespace ModelValidation
 {
     /// <summary>
