@@ -69,7 +69,7 @@ namespace ModelValidation.ViewModels
         }
 
         // ViewModel and visibility
-        private Visibility profileVisibility = Visibility.Collapsed;
+        private Visibility profileVisibility = Visibility.Hidden;
         public Visibility ProfileVisibility
         {
             get { return profileVisibility; }
@@ -79,7 +79,7 @@ namespace ModelValidation.ViewModels
             }
         }
 
-        private Visibility pddVisibility = Visibility.Collapsed;
+        private Visibility pddVisibility = Visibility.Hidden;
         public Visibility PDDVisibility
         {
             get { return pddVisibility; }
@@ -139,6 +139,12 @@ namespace ModelValidation.ViewModels
             ExportDataCommand = new DelegateCommand(OnExportData, CanExportData);
 
             CalculateBeamCommand = new DelegateCommand(OnCalcuateBeams);
+
+            PDDPlotModel.Series.Add(new LineSeries());
+            ProfilePlotModel.Series.Add(new LineSeries());
+
+            PDDPlotModel.InvalidatePlot(true);
+            ProfilePlotModel.InvalidatePlot(true);
         }
 
         // Calculate beams
@@ -247,7 +253,7 @@ namespace ModelValidation.ViewModels
             ScanData sd = obj as ScanData;
             if(sd.Direction == "PDD")
             {
-                ProfileVisibility = Visibility.Collapsed;
+                ProfileVisibility = Visibility.Hidden;
                 PDDVisibility = Visibility.Visible;
                 PDDPlotModel.Series.Clear();
 
@@ -263,11 +269,14 @@ namespace ModelValidation.ViewModels
             }
             else if (sd.Direction == "Profile (x)")
             {
-                PDDVisibility = Visibility.Collapsed;
+                PDDVisibility = Visibility.Hidden;
                 ProfileVisibility = Visibility.Visible;
                 ProfilePlotModel.Series.Clear();
 
-                LineSeries ls = new LineSeries();
+                LineSeries ls = new LineSeries()
+                {
+                   
+                };
                 foreach (var item in sd.DataPoints)
                 {
                     ls.Points.Add(new DataPoint(item.Position, item.Dose));
@@ -386,11 +395,11 @@ namespace ModelValidation.ViewModels
                 Direction = "PDD"
             };
 
-            VVector startPos = new VVector(0, -100, 0);
+            VVector startPos = new VVector(0, -200, 0);
 
-            VVector endPos = new VVector(0, 100, 0);
+            VVector endPos = new VVector(0, 200, 0);
 
-            double[] size = new double[301];
+            double[] size = new double[401];
 
             DoseProfile dp = beam.Dose.GetDoseProfile(startPos, endPos, size);
 

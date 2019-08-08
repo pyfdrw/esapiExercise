@@ -45,9 +45,9 @@
                   SelectedItem="{Binding SelectedPlan, Mode=TwoWay}"  Margin="5"/>
 
         <!--Writable Scripting only-->
-        <TextBlock Grid.Row="3" Text="Field Sized:"></TextBlock>
-        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding FileSizes}"></TextBlock>
-        <Button Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Command="{Binding CalculateBeamCommand}">Calculate Beams</Button>
+        <TextBlock Grid.Row="3" Grid.Column="1"  Text="Field Sized:"></TextBlock>
+        <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding FileSizes}"></TextBox>
+        <Button Grid.Row="3" Grid.Column="0" Command="{Binding CalculateBeamCommand}">Calculate Beams</Button>
 
             <ListBox Grid.Row="4" ItemsSource="{Binding ScanDataCollection}" Grid.ColumnSpan="3" x:Name="myListBox">
             <iz:Interaction.Triggers>
