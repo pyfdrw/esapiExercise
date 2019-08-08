@@ -15,10 +15,11 @@
     </iz:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="300"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -42,7 +43,12 @@
                   ItemsSource="{Binding PlanSetups}" 
                   SelectedItem="{Binding SelectedPlan, Mode=TwoWay}"  Margin="5"/>
 
-        <ListBox Grid.Row="3" ItemsSource="{Binding ScanDataCollection}" Grid.ColumnSpan="3">
+        <ListBox Grid.Row="3" ItemsSource="{Binding ScanDataCollection}" Grid.ColumnSpan="3" x:Name="myListBox">
+            <iz:Interaction.Triggers>
+                <iz:EventTrigger EventName="SelectionChanged">
+                    <iz:InvokeCommandAction Command="{Binding SelectedItemChangedCommand}"  CommandParameter="{Binding ElementName=myListBox, Path=SelectedItem}"/>
+                </iz:EventTrigger>
+            </iz:Interaction.Triggers>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -57,6 +63,9 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <oxy:PlotView Model="{Binding ProfilePlotModel}"></oxy:PlotView>
+        <oxy:PlotView Model="{Binding ProfilePlotModel}" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Visibility="{Binding ProfileVisibility}"></oxy:PlotView>
+        <oxy:PlotView Model="{Binding PDDPlotModel}"  Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Visibility="{Binding PDDVisibility}"></oxy:PlotView>
+
+        <Button Grid.Row="4" Grid.ColumnSpan="4" Command="{Binding ExportDataCommand}">Export to .csv</Button>
     </Grid>
 </Window>
